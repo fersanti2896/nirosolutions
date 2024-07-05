@@ -26,9 +26,8 @@ export const FooterNS = () => {
                             </p>
                             <p className='text-black flex items-center'>
                                 <BsGeoAltFill className="mr-2" />
-                                Av. Manuel Alvarez 111<br />
                                 Col. Juan Escutia, Alcaldía Iztapalapa<br />
-                                C.P. 00530, CDMX.
+                                C.P. 09100, CDMX.
                             </p>
                         </div>
 
