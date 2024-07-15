@@ -39,7 +39,7 @@ function App() {
       <div id="">
         <FooterNS />
       </div>
-      <FloatingWhatsApp phoneNumber='5542733766' 
+      <FloatingWhatsApp phoneNumber='5534351703' 
                         accountName='Ventas' 
                         statusMessage='Nuestro horario de atención es de 8 a.m. a 6 p.m.' 
                         chatMessage='Hola, ¿en qué te podemos ayudar?'
