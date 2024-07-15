@@ -1,8 +1,55 @@
+import { useState } from 'react';
 import { Button, Select, Label, TextInput, Textarea, Footer } from 'flowbite-react';
 import { BsFillTelephoneFill, BsEnvelopeFill, BsGeoAltFill } from 'react-icons/bs';
 import fondo from '../assets/img/fondo2.jpg';
+import emailjs from 'emailjs-com';
+import Swal from 'sweetalert2';
 
 export const ContactNS = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [id]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const serviceID = 'service_u3orz3v';
+        const templateID = 'template_wqnweg8';
+        const userID = 'FhBjYFxUXKuH0ppSX';
+
+        emailjs.send(serviceID, templateID, formData, userID)
+            .then((response) => {
+                Swal.fire({
+                    title: '¡Correo Enviado Correctamente!',
+                    text: 'Nuestro equipo se contactará contigo lo más pronto posible.',
+                    icon: 'success'
+                  });
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            }, (error) => {
+                console.log('FAILED...', error);
+                alert('Error al enviar el mensaje');
+            });
+    };
+
+
     return (
         <>
             <div className='relative min-h-screen bg-cover bg-center' style={{ backgroundImage: `url(${fondo})` }}>
@@ -23,53 +70,54 @@ export const ContactNS = () => {
                                 </p><br />
                                 <p className='text-black flex items-center text-xl'>
                                     <BsGeoAltFill className="mr-2" />
-                                    Av. Manuel Alvarez 111<br />
-                                    Col. Juan Escutia, Alcaldía Iztapalapa<br />
-                                    C.P. 00530, CDMX.
+                                    Alcaldía Iztapalapa<br />
+                                    C.P. 09100, CDMX.
                                 </p><br />
                             </div>
                             <div className='sm:w-1/2'>
-                                <form className='w-full'>
-                                    <div className='mb-4'>
-                                        <div className="mb-2 block">
-                                            <Label htmlFor="text1" value="Nombre (s)" />
-                                        </div>
-                                        <TextInput id="text1" type="text" placeholder="Fernando Nicolás" required />
+                            <form className='w-full' onSubmit={handleSubmit}>
+                                <div className='mb-4'>
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="name" value="Nombre (s)" />
                                     </div>
-                                    <div className='mb-4'>
-                                        <div className='mb-2 block'>
-                                            <Label htmlFor="number1" value="Teléfono" />
-                                        </div>
-                                        <TextInput id="number1" type="tel" placeholder='55 5555 4444' required />
+                                    <TextInput id="name" type="text" placeholder="Fernando Nicolás" required value={formData.name} onChange={handleChange} />
+                                </div>
+                                <div className='mb-4'>
+                                    <div className='mb-2 block'>
+                                        <Label htmlFor="phone" value="Teléfono" />
                                     </div>
-                                    <div className='mb-4'>
-                                        <div className="mb-2 block">
-                                            <Label htmlFor="email1" value="Correo Electrónico" />
-                                        </div>
-                                        <TextInput id="email1" type="email" placeholder="example@gmail.com" required />
+                                    <TextInput id="phone" type="tel" placeholder='55 5555 4444' required value={formData.phone} onChange={handleChange} />
+                                </div>
+                                <div className='mb-4'>
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="email" value="Correo Electrónico" />
                                     </div>
-                                    <div className="mb-4">
-                                        <div className="mb-2 block">
-                                            <Label htmlFor="countries" value="Tipo de Asunto" />
-                                        </div>
-                                        <Select id="countries" required>
-                                            <option>Servicios Contables</option>
-                                            <option>Impuestos</option>
-                                            <option>Asesoría</option>
-                                            <option>Servicios de Tecnología TI</option>
-                                        </Select>
+                                    <TextInput id="email" type="email" placeholder="example@gmail.com" required value={formData.email} onChange={handleChange} />
+                                </div>
+                                <div className="mb-4">
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="subject" value="Tipo de Asunto" />
                                     </div>
-                                    <div className="mb-4">
-                                        <div className="mb-2 block">
-                                            <Label htmlFor="comment" value="Mensaje" />
-                                        </div>
-                                        <Textarea id="comment" placeholder="Comentario..." required rows={4} />
+                                    <Select id="subject" required value={formData.subject} onChange={handleChange}>
+                                        <option value="">Selecciona un asunto</option>
+                                        <option value="Servicios Contables">Servicios Contables</option>
+                                        <option value="Impuestos">Impuestos</option>
+                                        <option value="Asesoría">Asesoría</option>
+                                        <option value="Servicios de Tecnología TI">Servicios de Tecnología TI</option>
+                                    </Select>
+                                </div>
+                                <div className="mb-4">
+                                    <div className="mb-2 block">
+                                        <Label htmlFor="message" value="Mensaje" />
                                     </div>
-                                    <div className='flex justify-center'>
-                                        <Button className='mt-4 w-3/4' color="success" type="submit">Enviar</Button>
-                                    </div>
-                                </form>
-                            </div>
+                                    <Textarea id="message" placeholder="Comentario..." required rows={4} value={formData.message} onChange={handleChange} />
+                                </div>
+                                <div className='flex justify-center'>
+                                    <Button className='mt-4 w-3/4' color="success" type="submit">Enviar</Button>
+                                </div>
+                            </form>
+                        </div>
+
                         </div>
                     </div>
                 </div>

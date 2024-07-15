@@ -6,6 +6,9 @@ import { NavbarI } from './components/NavbarI'
 import { ServicesNS } from './components/ServicesNS'
 import { ContactNS } from './components/ContactNS'
 import { FooterNS } from './components/FooterNS'
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import logo from '../src/assets/img/logo.png';
+import { FaqNS } from './components/FaqNS'
 
 function App() {
   const [bgHeight, setBgHeight] = useState(0);
@@ -30,9 +33,19 @@ function App() {
       <div id="contact">
         <ContactNS />
       </div>
+      <div id="faq">
+        <FaqNS />
+      </div>
       <div id="">
         <FooterNS />
       </div>
+      <FloatingWhatsApp phoneNumber='5542733766' 
+                        accountName='Ventas' 
+                        statusMessage='Nuestro horario de atención es de 8 a.m. a 6 p.m.' 
+                        chatMessage='Hola, ¿en qué te podemos ayudar?'
+                        avatar={logo}
+                        placeholder='Escribe un mensaje.'
+                        notification='true' />
     </>
   )
 }

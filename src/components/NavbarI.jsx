@@ -44,9 +44,6 @@ export const NavbarI = ({ bgHeight }) => {
                         <Link to="services" smooth={true} duration={500} className={`cursor-pointer ${isScrolled ? 'text-black' : 'text-white'}`}>SERVICIOS</Link>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <Link to="testimonial" smooth={true} duration={500} className={`cursor-pointer ${isScrolled ? 'text-black' : 'text-white'}`}>TESTIMONIOS</Link>
-                    </Navbar.Link>
-                    <Navbar.Link>
                         <Link to="contact" smooth={true} duration={500} className={`cursor-pointer ${isScrolled ? 'text-black' : 'text-white'}`}>CONTACTO</Link>
                     </Navbar.Link>
                     <Navbar.Link>

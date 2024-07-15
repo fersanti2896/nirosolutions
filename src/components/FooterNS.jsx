@@ -1,6 +1,7 @@
 import { Footer } from 'flowbite-react';
 import { BsEnvelopeFill, BsFacebook, BsFillTelephoneFill, BsGeoAltFill, BsInstagram, BsTwitter } from 'react-icons/bs';
 import logo from '../assets/img/logo-sin.png';
+import { Link } from 'react-scroll';
 
 export const FooterNS = () => {
     return (
@@ -16,17 +17,17 @@ export const FooterNS = () => {
                         />
                         <div className='mt-8 sm:mt-0 sm:ml-16 font-normal'>
                             <Footer.Title className='text-black' title="Oficina CDMX" />
-                            <p className='text-black flex items-center'>
+                            <p className='text-black flex items-center mb-2'>
                                 <BsFillTelephoneFill className="mr-2" />
                                 +52 55 3435 1703
                             </p>
-                            <p className='text-black flex items-center'>
+                            <p className='text-black flex items-center mb-2'>
                                 <BsEnvelopeFill className="mr-2" />
                                 contacto@nirosolutions.com
                             </p>
-                            <p className='text-black flex items-center'>
+                            <p className='text-black flex items-center mb-2'>
                                 <BsGeoAltFill className="mr-2" />
-                                Col. Juan Escutia, Alcaldía Iztapalapa<br />
+                                Alcaldía Iztapalapa
                                 C.P. 09100, CDMX.
                             </p>
                         </div>
@@ -36,17 +37,26 @@ export const FooterNS = () => {
                                 <div>
                                     <Footer.Title className='text-black' title="Niro Solutions" />
                                     <Footer.LinkGroup col>
-                                        <Footer.Link href="#">¿Quiénes Somos?</Footer.Link>
-                                        <Footer.Link href="#">Servicios</Footer.Link>
-                                        <Footer.Link href="#">Contacto</Footer.Link>
-                                        <Footer.Link href="#">FAQ</Footer.Link>
+                                        <Footer.Link href="#">
+                                            <Link to="about">¿Quiénes Somos?</Link>
+                                        </Footer.Link>
+                                        <Footer.Link href="#">
+                                        <Link to="services">Servicios</Link>
+                                        </Footer.Link>
+                                        <Footer.Link href="#">
+                                            <Link to="contact">Contacto</Link>
+                                        </Footer.Link>
+                                        <Footer.Link href="#">
+                                            <Link to="faq">FAQ</Link>
+                                        </Footer.Link>
                                     </Footer.LinkGroup>
                                 </div>
                                 <div>
                                     <Footer.Title className='text-black' title="Legal" />
                                     <Footer.LinkGroup col>
-                                        <Footer.Link href="#">Aviso de Privacidad</Footer.Link>
-                                        <Footer.Link href="#">Términos &amp; Condiciones</Footer.Link>
+                                        <Footer.Link href="#">
+                                            <Link to="privacity">Aviso de Privacidad</Link>
+                                        </Footer.Link>
                                     </Footer.LinkGroup>
                                 </div>
                             </div>
